@@ -4,10 +4,20 @@
     box-sizing: border-box;
 }
 body {
-    background-color: #e7d49f48;
+    background-color: #e7d49f80;
+}
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+} 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 160px;
 }
 
-p {
+p,
+li {
     font-family: Palatino, URW Palladio L, serif;
     font-size: 16px;
     color: #69524b;
@@ -16,7 +26,7 @@ p {
 }
 h1 {
     font-family: Palatino, URW Palladio L, serif;
-    font-size: 80px;
+    font-size: 50px;
     color: white;
     font-weight: bold;
     text-align: center;
@@ -62,13 +72,9 @@ figure {
     margin-bottom: 10px;
     gap: 5%;
 }
-.publicacoes a {
-    color: #388336;
-    font-size: 20px;
-}
 
 .cabecalho {
-    padding: 50px;
+    padding: 10px 80px;
     background-color: #f9b29c;
     display: grid;
     grid-template-columns: auto 1fr;
@@ -76,8 +82,8 @@ figure {
     gap: 5%;
 }
 .retratoProfissional {
-    width: 300px;
-    height: 300px;
+    width: 130px;
+    height: 130px;
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
@@ -88,13 +94,18 @@ figure {
     grid-template-rows: auto auto;
     align-items: center;
     justify-items: center;
-    gap: 30%
+    gap: 10%;
 }
 .opcoes_menu {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap:10px;
 }
 .opcoes_menu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: whitesmoke;
     padding: 10px;
     border-radius: 25px;
@@ -102,20 +113,44 @@ figure {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
-}
-.opcoes_menu a:hover {
-    background-color: #4e9245;
-    color: whitesmoke;
+    text-align: center;
 }
 
 .sobre_mim {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
     padding: 20px;
-    margin: 0px 100px 0px 100px;
+    align-items: center;
+}
+.sobre_mim_texto {
+    padding: 20px;
+    margin: 0px 25px 0px 0px;
     background-color: white;
     backdrop-filter: blur(10px);
-    border: 1.5px solid #ccba87b6;
-    border-radius: 25px;
-    box-shadow: 0 8px 32px rgba(155, 121, 46, 0.555);
+}
+.sobre_mim_estatisticas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.estatisticas {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: #4e924571;
+}
+.estatistica_nr {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+.estatisticas h4 {
+    font-size: 20px;
+    color: rgb(71, 68, 68);
+    text-align: justify;
 }
 
 .experiencia_profissional,
@@ -127,16 +162,12 @@ figure {
     gap: 5%;
     align-items: stretch;
 }
-
 .mobilityfriends,
 .ipca-2ai,
 .licenciatura,
 .mestrado {
     background-color: white;
     backdrop-filter: blur(10px);
-    border: 1.5px solid #ccba87b6;
-    border-radius: 25px;
-    box-shadow: 0 8px 32px rgba(155, 121, 46, 0.555);
     color: inherit;
     margin-bottom: 10px;
 }
@@ -164,6 +195,21 @@ figure {
     background-color:rgba(155, 121, 46, 0.233);
     padding: 5px 20px;
 }
+.experiencia_profissional ul {
+    list-style: none;
+    padding: 10px 30px 0 30px;
+}
+.experiencia_profissional li{
+    padding-left: 1.2em;
+    position: relative;
+    margin-bottom: 3px;
+}
+.experiencia_profissional li::before {
+    content: "•";
+    color: #f9b29c;
+    position: absolute;
+    left: 0;
+}
 .innoboost a {
     background-color: #a7ddb6;
     padding: 10px;
@@ -176,29 +222,9 @@ figure {
     display: block;
     margin-top: 10px;
 }
-.mf_link:hover .mf_titulo,
-.ipca_link:hover .ipca-2ai_titulo,
-.innoboost a:hover {
-    background-color: #4e9245;
-}
 .mf_link,
 .ipca_link {
     text-decoration: none;
-}
-.capitulo,
-.livro {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: space-between;
-    background-color: white;
-    backdrop-filter: blur(10px);
-    border: 1.5px solid #ccba87b6;
-    border-radius: 25px;
-    box-shadow: 0 8px 32px rgba(155, 121, 46, 0.555);
-    color: inherit;
-    margin-bottom: 10px;
 }
 .licenciatura h4,
 .mestrado h4,
@@ -207,16 +233,25 @@ figure {
     text-align: center;
     margin-bottom: 10px;
 }
-.publicacoes a {
-    background-color: rgb(168, 114, 76);
-    padding: 10px;
-    color: white;
-    text-decoration: none;
+
+.artigo {
+    background-color: white;
     border-radius: 25px;
     margin-top: 10px;
 }
-.publicacoes a:hover {
-    background-color: #4e9245;
+.artigo a {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+}
+.artigo_botao {
+    color: white;
+    background-color: rgb(168, 114, 76);
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 25px;
 }
 
 .formacao {
@@ -236,8 +271,6 @@ figure {
     color:#69524b;
     background-color: white;
     padding: 15px 12px;
-    border-radius: 25px;
-    box-shadow: 0 8px 32px rgba(155, 121, 46, 0.555);
 }
 .container_marcador {
     display: flex;
@@ -284,6 +317,7 @@ figure {
 .ferramentas_microsoft {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 3%;
 }
@@ -308,14 +342,13 @@ figure {
     color:white;
     background-color: rgb(168, 114, 76);
     padding: 15px 12px;
-    border-radius: 25px;
-    box-shadow: 0 8px 32px rgba(155, 121, 46, 0.555);
 }
 
 .hobbies {
     padding: 20px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 3%;
 }
@@ -323,6 +356,22 @@ figure {
     width: 200px;
     height: 200px;
     object-fit: contain;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 15px 20px;
+    gap: 20px;
+}
+.container_video {
+    width: 100%;
+    height: 100%;
+}
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .rodape {
@@ -355,4 +404,166 @@ figure {
     height: 50px;
     object-fit: contain;
     border-radius: 25%;
+}
+
+.opcoes_menu a:hover,
+.mf_link:hover .mf_titulo,
+.ipca_link:hover .ipca-2ai_titulo,
+.innoboost a:hover,
+.artigo a:hover .artigo_botao {
+    background-color: #4e9245;
+    color: whitesmoke;
+}
+
+.sobre_mim_texto,
+.estatisticas,
+.mobilityfriends,
+.ipca-2ai,
+.licenciatura,
+.mestrado,
+.formacao_data,
+.soft_skills p,
+.video {
+    border: 1.5px solid #ccba87b6;
+    border-radius: 25px;
+    box-shadow: 0 8px 32px rgba(155, 121, 46, 0.555); 
+}
+
+@media (max-width: 1024px) {
+    html {
+        scroll-padding-top: 200px;
+    }
+    .cabecalho {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 10px;
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        padding-bottom: 30px;
+    }
+    .retratoProfissional {
+        width: 90px;
+        height: 90px;
+    }
+    h1 {
+        font-size: 36px;
+    }
+    .sobre_mim {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .sobre_mim_texto {
+        margin: 0;
+    }
+    .mobilityfriends img,
+    .ipca-2ai img,
+    .licenciatura img,
+    .mestrado img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+    .ipca-2ai {
+        display: flex;
+        flex-direction: column;
+    }
+    .ipca-2ai .logo_innoboost {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        object-fit: contain;
+        margin-top: auto;
+        margin-bottom: 60px;
+        padding: 10px 20px 0;
+    }
+    .artigo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+    .soft_skills {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        position: static;
+    }
+    html {
+        scroll-padding-top: 0;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    h2 {
+        font-size: 28px;
+    }
+    .cabecalho {
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        padding-bottom: 30px;
+    }
+    .opcoes_menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    .experiencia_profissional,
+    .graus_academicos,
+    .publicacoes {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .mobilityfriends img,
+    .ipca-2ai img,
+    .licenciatura img,
+    .mestrado img {
+        height: 200px;
+    }
+    .ipca-2ai img.logo_innoboost {
+        max-height: 120px;
+        object-fit: contain;
+    }
+    .formacao_item {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+    }
+    .container_marcador {
+        display: none;
+    }
+    .formacao_data {
+        font-size: 18px;
+    }
+    .formacao_horas {
+        margin-left: 0;
+    }
+    .idiomas img,
+    .programacao img,
+    .ferramentas_microsoft img {
+        width: 70px;
+        height: 70px;
+    }
+    .soft_skills {
+        grid-template-columns: 1fr;
+    }
+    .hobbies img {
+        width: 120px;
+        height: 120px;
+    }
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+    .galeria video {
+        height: 220px;
+    }
+    .contactos {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
 }
